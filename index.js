@@ -4,14 +4,21 @@ function lowerCaseDrivers(drivers){
 }
 
 function nameToAttributes(drivers){
-	let newDrivers = drivers.map(function(driver){
-		return Object.assign({}, driver,{ firstName: driver, lastName: driver });
-		}
-	newDrivers = newDrivers.map(driver => driver.firstName = driver[0][0]);
-	newDrivers = newDrivers.map(driver => driver.lastName = driver[0][1] );
+	const newDrivers = drivers.map(driver =>{ 
+	 	return Object.assign(
+			{},
+			{
+				firstName: driver.split(" ")[0],
+				lastName: driver.split(" ")[1]
+			}
+			)
+	});
 	return newDrivers;
 }
 
-function attributesToPhrase(){
-	
+function attributesToPhrase(drivers){
+	const newPhrases = drivers.map(driver =>{
+		return `${driver.name} is from ${driver.hometown}`
+	});
+	return newPhrases;
 }
